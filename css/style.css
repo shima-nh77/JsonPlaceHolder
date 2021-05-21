@@ -32,3 +32,7 @@
 	top: -1%;
 	color: #146c43
 }
+
+#my-textarea{
+	border: 1px solid lightgray;
+}

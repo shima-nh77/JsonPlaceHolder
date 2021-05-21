@@ -5,20 +5,26 @@ document.getElementById("createForm")
 
     const formData = new FormData(formObj);
 
-    // console.log(
-    //     formData.get("age")
-    // );
-
     axios.post(formObj.getAttribute("action"),{
         name:formData.get("name"),
-        username:formData.get("username"),
+        Email:formData.get("Email"),
         phone:formData.get("phone"),
-        address:formData.get("address")
+        UserName:formData.get("UserName")
     })
     .then(function(res){
-        const data = res.data.data;
-        console.log("data",data);
-        alert(` ${data.name} added`);
+        const data = res.data;
+        alert(` ${data.name} has been added`);
     });
 
-});
+ });
+
+ //only Number for input Func
+  function onlyNumberKey(evt) {
+         
+    // Only ASCII character in that range allowed
+    var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+    if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+        return false;
+    return true;
+    
+  }

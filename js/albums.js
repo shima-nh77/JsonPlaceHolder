@@ -2,6 +2,9 @@ axios.get(`https://jsonplaceholder.typicode.com/albums`)
 .then(response => {
     const data = response.data;
     const postsContainer = $("#albums");
+    $("#modalTitle").append(`
+    Photos in this album: ${data.length} 
+    `);
     // console.log("data",data);
     data.forEach(element => {
         // console.log("element",element);
@@ -19,7 +22,7 @@ axios.get(`https://jsonplaceholder.typicode.com/albums`)
     });
 })
 
-
+//get photos:
 function getAlbumPhotos(albumId){
     axios.get(`https://jsonplaceholder.typicode.com/albums/${albumId}/photos`)
     .then(response => {

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>comments</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -11,10 +11,8 @@
 
 
 
-
+ <!-- navbar -->
     <div class="container">
-
-
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container-fluid">
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,21 +47,65 @@
               </div>
             </div>
           </nav>
-
-
     </div>
+  <!-- navbar End -->
 
-
-    <div class="container" > 
+    <div class="container"> 
       <div class="row"  id="post">
-
-      </div>    
+      </div> 
     </div>
-    <!-- <div class="container">
-        <div class="row" id="post">
-            
+    
+    <!-- comment modal -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+    
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Add Comment</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+    
+          <!-- Modal body -->
+          <div class="row" >
+            <div class="col-sm-1 mt-2 mb-2" style="margin-left: 10px;">
+            <img class="img-fluid rounded user-photo img-thumbnail" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+            </div>
+            <div class="col-sm-10 mt-2 mb-2">
+             <div class="card card-cm " style="height: 240px; width: 600px;">
+              <form action="https://jsonplaceholder.typicode.com/comments" method="POST"
+              id="createForm">
+                  <div class="form-group ">
+                    <div class="card-header" id="cardHeader">
+                      <strong><span>Name:</span>
+                        <input type="text" name="name"  minlength="5" required 
+                        style="border: 1px solid lightgray; margin-left: 20px;">
+                   </div>
+                 </div>
+                 <div class="form-group ">
+                    <div class="card-body">
+                      <textarea class="form-control"  name="content" id="my-textarea" rows="5" cols="70" >
+                      </textarea>
+                      <div class="save_button primary_btn default_button mt-1 mb-1">
+                        <button type="submit" class="btn btn-info btn-sm" style="cursor: pointer;">send</button>
+                       </div>
+                   </div>  
+                </div>
+            </form>
+             </div>
+            </div>
+          </div> 
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-bs-dismiss="modal">Close</button>
+          </div>
+    
         </div>
-    </div> -->
+      </div>
+    </div>
+   <!-- comment modal end -->
+
     
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

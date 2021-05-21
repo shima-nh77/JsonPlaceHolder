@@ -26,12 +26,11 @@ axios.get(`https://jsonplaceholder.typicode.com/posts`)
     });
 })
 
-//  function Deletepost(postid){
-//     axios.delete(`https://jsonplaceholder.typicode.com/posts/${postid}`)
-//     .then(function(){
-//         $("#delete").parent().remove();
-//     })
-//     .then(function(){
-//         alert(`Your request has been received and post with ID ${id} has been deleted`);
-//     })
-// }
+//deleting post:
+ function Deletepost(postid){
+    $("#delete").parent().parent().remove();
+    axios.delete(`https://jsonplaceholder.typicode.com/posts/${postid}`)
+    .then(function(){
+        alert(` post has been deleted`);
+    })
+}

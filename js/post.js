@@ -1,4 +1,4 @@
-
+//show the clicked post:
 const urlSearchParams = new URLSearchParams(window.location.search);
 
 const id = urlSearchParams.get("id");
@@ -21,7 +21,8 @@ async function fetchData(){
             </div>
         `);
     })
-
+ 
+    //show the comments for clicked post:
     await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
     .then(response => {
         const data = response.data;
@@ -50,25 +51,34 @@ async function fetchData(){
                         </div>
                        </div>
                        </div>
+                      
               
             `);
         });
+        postContainer.append(`
+            <div class="col-md-12 mt-3 mb-3">
+            <button class="btn btn-info "  onClick="AddComment()" >Add Comment</button>
+            </div>
+        `);
+        
     })
 }
+ fetchData();
 
-fetchData();
 
-
-// fetch('https://jsonplaceholder.typicode.com/albums', {
-//   method: 'POST',
-//   body: JSON.stringify({
-//     title: 'asdasdsd',
-//     body: 'basdasdasdar',
-//     userId: 1,
-//   }),
-//   headers: {
-//     'Content-type': 'application/json; charset=UTF-8',
-//   },
-// })
-//   .then((response) => response.json())
-//   .then((json) => console.log(json));
+  //adding comment:
+  function AddComment(){
+    const myModal = new bootstrap.Modal(document.getElementById('myModal'));
+    myModal.show();
+    $("#myModal form").submit(function(event){
+     event.preventDefault();
+        const data = $(this).serialize();
+       
+        axios.post("https://jsonplaceholder.typicode.com/comments",data)
+        .then(res => {
+            const data = res.data;
+            alert(`Dear ${data.name} your comment has been received`);
+        })
+    })
+}
+  

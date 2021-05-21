@@ -28,15 +28,19 @@ axios.get(`https://jsonplaceholder.typicode.com/users`)
         `);
     });
 })
-
+ //getting user's albums:
 function getUserALbums(albumId){
+    $("#usersservice #modal-titr").html("");
     axios.get(`https://jsonplaceholder.typicode.com/users/${albumId}/albums`)
     .then(response => {
         const data = response.data;
-        $("#photos .row").html("");
-        const myModal = new bootstrap.Modal(document.getElementById('photos'));
+        $("#usersservice .row").html("");
+        $("#modal-titr").append(`
+        Number of this user's albums: ${data.length} 
+        `);
+        const myModal = new bootstrap.Modal(document.getElementById('usersservice'));
         data.forEach(element => {
-            $("#photos .row").append(`
+            $("#usersservice .row").append(`
             <div class="col-md-4">
             <div class="card mt-2 text-center" style=" height:190px;">
                 <div class="card-body">
@@ -46,23 +50,25 @@ function getUserALbums(albumId){
                 </div>
             </div>
         </div>
-              
             `);
-            
         });
         myModal.show();
-        
     })
 }
+
+//getting album's photo:
 function getAlbumPhotos(albumId){
     axios.get(`https://jsonplaceholder.typicode.com/albums/${albumId}/photos`)
     .then(response => {
         const data = response.data;
-        $("#photos .row").html("");
-        const myModal = new bootstrap.Modal(document.getElementById('photos'));
-       
+        $("#usersservice .row").html("");
+        $("#usersservice #modal-titr").html("");
+        $("#modal-titr").append(`
+        Photos in this album: ${data.length} 
+        `);
+        const myModal = new bootstrap.Modal(document.getElementById('usersservice'));
         data.forEach(element => {
-            $("#photos .row").append(`
+            $("#usersservice .row").append(`
                 <div class="col-md-4 mt-2 ">
                     <div class="card"  style="height:351.33px">
                         <img src="${element.thumbnailUrl}" class="card-img-top" alt="...">
@@ -79,39 +85,46 @@ function getAlbumPhotos(albumId){
         
     })
 }
-
+//getting user's Todoes:
 function getUserTodoes(albumId){
     axios.get(`https://jsonplaceholder.typicode.com/users/${albumId}/todos`)
     .then(response => {
         const data = response.data;
-        $("#photos .row").html("");
-        const myModal = new bootstrap.Modal(document.getElementById('photos'));
+        $("#usersservice .row").html("");
+        $("#usersservice #modal-titr").html("");
+        $("#modal-titr").append(`
+        Number of this user's Todoes: ${data.length} 
+        `);
+        const myModal = new bootstrap.Modal(document.getElementById('usersservice'));
         data.forEach(element => {
-            $("#photos .row").append(`
+            $("#usersservice .row").append(`
             <div class="col-md-4">
             <div class="card mt-2 text-center" style=" height:200px;">
                 <div class="card-body">
                 <h5 class="card-title">${element.title}</h5>
                 <h5 class="card-title"><span class="fw-bold">Completed:</span>${element.completed}</h5>
             </div>
-        </div>
-              
+        </div>      
             `);
             
         });
         myModal.show();
-        
     })
 }
 
+//getting user's post:
 function getUserPosts(albumId){
     axios.get(`https://jsonplaceholder.typicode.com/users/${albumId}/posts`)
     .then(response => {
         const data = response.data;
-        $("#photos .row").html("");
-        const myModal = new bootstrap.Modal(document.getElementById('photos'));
+        $("#usersservice .row").html("");
+        $("#usersservice #modal-titr").html("");
+        $("#modal-titr").append(`
+        Number of this user's Posts: ${data.length} 
+        `);
+        const myModal = new bootstrap.Modal(document.getElementById('usersservice'));
         data.forEach(element => {
-            $("#photos .row").append(`
+            $("#usersservice .row").append(`
             <div class="col-md-12">
             <div class="card mt-2 text-center" style=" height:160px;">
                 <div class="card-body">
@@ -124,6 +137,5 @@ function getUserPosts(albumId){
             
         });
         myModal.show();
-        
     })
-}
+ }
